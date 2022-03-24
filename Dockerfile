@@ -23,7 +23,7 @@ RUN npm run build
 FROM nginx:latest
 
 # Copy the build output to replace the default nginx contents
-COPY --from=build /usr/src/app/dist/jenkins-docker-test /usr/share/nginx/html
+COPY --from=build /usr/src/app/dist/ht-app /usr/share/nginx/html
 
 # Expose port 4200
 #EXPOSE 4200
