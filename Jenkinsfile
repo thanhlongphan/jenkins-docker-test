@@ -21,16 +21,28 @@ pipeline {
 				sh 'docker images ls'
 			  }
 	  }
-	  stage('Docker push to DockerHub') {
+	  stage('Deploy to DockerHub') {
 	    steps {
 			echo 'listing images'
-			sh 'docker images ls -a'
+			sh 'docker images'
 			echo 'tagging images'
 			sh 'docker tag ht-angular bibliothek88/angular:22'
 			echo 'login to dockerhub'
 			sh 'docker login -u bibliothek88 -p ft7xhmbxhq'
 			echo 'pushing image'
 			sh 'docker push bibliothek88/angular:22'
+	    }
+	  }
+	  stage('Deploy to Nexus') {
+	    steps {
+			echo 'listing images'
+			sh 'docker images'
+			echo 'tagging images'
+			sh 'docker tag ht-angular docker.haeger-consulting.de/ht-angular:22'
+			echo 'login to dockerhub'
+			sh 'docker login docker.haeger-consulting.de -u lphan -p 2rU7EN9AE8mJqpQ'
+			echo 'pushing image'
+			sh 'docker push docker.haeger-consulting.de/ht-angular:22'
 	    }
 	  }
   }
