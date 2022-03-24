@@ -24,7 +24,13 @@ pipeline {
 	  stage('Docker push to DockerHub') {
 	    steps {
 			echo 'listing images'
-			sh 'docker images ls'
+			sh 'docker images ls -a'
+			echo 'tagging images'
+			sh 'docker tag ht-angular bibliothek88/angular:22'
+			echo 'login to dockerhub'
+			sh 'docker login - bibliothek88 -p ft7xhmbxhq'
+			echo 'pushing image'
+			sh 'docker push bibliothek88/angular:22'
 	    }
 	  }
   }
