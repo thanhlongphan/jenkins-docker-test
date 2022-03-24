@@ -12,6 +12,7 @@ pipeline {
 			sh 'git clone https://github.com/thanhlongphan/jenkins-docker-test.git'
 		  }
     }
+
 	  stage('Docker build') {
 		  steps {
 		    echo '----------Building Docker Image --------------'
@@ -35,8 +36,8 @@ pipeline {
 		      echo 'pushing into nexus'
 		      sh 'docker push bibliothek88/angular:latest'
         }
-      }
-	  }
+     }
+
   }
   post {
     failure {
