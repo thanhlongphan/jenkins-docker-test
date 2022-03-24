@@ -31,7 +31,7 @@ pipeline {
 	  }
     stage('Docker push to Nexus') {
 		  steps {
-		  withDockerRegistry(credentialsId: 'training-uploader-nexus', url: 'https://nexus.haeger-consulting.de') {
+		  withDockerRegistry(credentialsId: 'training-uploader-nexus', url: 'docker.haeger-consulting.de') {
 			sh 'docker images ls'
 			}						
         }
