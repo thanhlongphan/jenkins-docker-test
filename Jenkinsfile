@@ -31,8 +31,8 @@ pipeline {
 	  }
     stage('Docker push to Nexus') {
 		  steps {
-		  withDockerRegistry(credentialsId: 'long-nexus-privat', url: 'https://176c-84-139-106-130.ngrok.io/') {
-        				sh 'docker push bibliothek88/angular:latest'   
+		  withDockerRegistry(credentialsId: 'training-uploader-nexus', url: 'https://nexus.haeger-consulting.de') {
+			sh 'docker images ls'
 			}						
         }
      }
