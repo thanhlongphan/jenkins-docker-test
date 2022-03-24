@@ -2,27 +2,24 @@ pipeline {
   agent any
   stages {
     stage('Clone the repo') {
-		steps {
+		  steps {
 			echo 'Clone the repo'
 			sh 'rm -rf jenkins-docker-test'
 			sh 'git clone https://github.com/thanhlongphan/jenkins-docker-test.git'
-		}
+		  }
     }
-	stage('Docker build') {
-		steps {
-			withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
+	  stage('Docker build') {
+		  steps {
 				sh 'docker build -t bibliothek88/angular .'
-
-			}
-		}
-	}
+			  }
+	  }
     stage('Docker push') {
-		steps {
-			withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
-				sh 'docker push bibliothek88/angular'
-			}
-		}
-	}
+		  steps {
+			  withDockerRegistry(credentialsId: 'long-nexus-login', url: 'https://nexus.haeger-consulting.de/') {
+            sh 'docker push bibliothek88/angular'
+        }
+		  }
+	  }
   }
   post {
     failure {
