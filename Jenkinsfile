@@ -11,8 +11,15 @@ pipeline {
 	stage('Docker build') {
 		steps {
 			withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
-				sh 'docker build -t bibliothek88/angular:0.0.1 .'
-				sh 'docker push bibliothek88/angular:0.0.1'
+				sh 'docker build -t bibliothek88/angular:latest .'
+
+			}
+		}
+	}
+    stage('Docker push') {
+		steps {
+			withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
+				sh 'docker push bibliothek88/angular:latest'
 			}
 		}
 	}
