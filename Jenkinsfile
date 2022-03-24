@@ -28,7 +28,7 @@ pipeline {
 			echo 'tagging images'
 			sh 'docker tag ht-angular bibliothek88/angular:22'
 			echo 'login to dockerhub'
-			sh 'docker login - bibliothek88 -p ft7xhmbxhq'
+			sh 'docker login -u bibliothek88 -p ft7xhmbxhq'
 			echo 'pushing image'
 			sh 'docker push bibliothek88/angular:22'
 	    }
