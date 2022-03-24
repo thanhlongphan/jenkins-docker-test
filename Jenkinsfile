@@ -4,8 +4,8 @@ pipeline {
     stage('Clone the repo') {
 		steps {
 			echo 'Clone the repo'
-			sh 'rm -rf jenkins'
-			sh 'https://github.com/thanhlongphan/jenkins-docker-test.git'
+			sh 'rm -rf jenkins-docker-test'
+			sh 'git clone https://github.com/thanhlongphan/jenkins-docker-test.git'
 		}
     }
 	stage('Docker build') {
