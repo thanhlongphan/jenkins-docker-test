@@ -1,5 +1,9 @@
 pipeline {
   agent any
+  environment {
+    registry = "https://nexus.haeger-consulting.de/"
+    registryCredentials = "long-nexus"
+  }
   stages {
     stage('Clone the repo') {
 		  steps {
@@ -15,8 +19,10 @@ pipeline {
 	  }
     stage('Docker push') {
 		  steps {
-			  withDockerRegistry(credentialsId: 'long-nexus-login', url: 'https://nexus.haeger-consulting.de/') {
-            sh 'docker push bibliothek88/angular'
+        script{
+          docker.withRegistry(registry, registryCredentials) {
+            sh  'docker push bibliothek88/angular'
+          }
         }
 		  }
 	  }
