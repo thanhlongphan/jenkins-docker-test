@@ -16,31 +16,16 @@ pipeline {
 	  stage('Docker build') {
 		  steps {
 		    echo '----------Building Docker Image --------------'
-				sh 'docker build -t bibliothek88/angular:latest .'
+				sh 'docker build -t ht-angular .'
 				echo '----------List of Docker Image ---------------'
 				sh 'docker images ls'
 			  }
 	  }
 	  stage('Docker push to DockerHub') {
 	    steps {
-	      echo '-----------Pushing Docker Image to Docker Hub----------------'
-	      withDockerRegistry(credentialsId: 'dockerhub', url: 'https://index.docker.io/v1/') {
-        				sh 'docker push bibliothek88/angular:latest'
-        }
+			echo 'listing images'
+			sh 'docker images ls'
 	    }
 	  }
-    stage('Docker push to Nexus') {
-		  steps {
-		  		echo '---------- Login into Nexus -----------'
-				sh 'docker login docker.haeger-consulting.de -u lphan -p 2rU7EN9AE8mJqpQ'
-				sh 'docker push bibliothek88/angular:latest'
-        }
-     }
-
-  }
-  post {
-    failure {
-      emailext body: 'Summary', subject: 'Pipeline Status', to: 'lphan@haeger-consulting.de'
-    }
   }
 }
