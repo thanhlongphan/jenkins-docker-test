@@ -1,0 +1,27 @@
+<app-header></app-header>
+
+
+<div>
+  <main id="container">
+    <div id="update-form-container" class="update-form-container">
+      <div class="update-form-header">
+        <h1>Update My Account</h1>
+      </div>
+      <div class="update-form-body">
+        <form id="update-form" accept-charset="UTF-8" method="post" (ngSubmit)="onclick()">
+          <!--first name-->
+          <label for="firstname">New First Name:</label>
+          <input type="text" id="firstname" class="input-block form-control" name="firstname" [(ngModel)]="updateFirstName">
+          <!--last name-->
+          <label for="lastname">New Last Name:</label>
+          <input type="text" id="lastname" class="input-block form-control" name="lastname" [(ngModel)]="updateLastName">
+          <!--password-->
+          <label for="password">New Password:</label>
+          <input type="password" id="password" class="input-block form-control" name="password" [(ngModel)]="updatePassword">
+          <!--submit button-->
+          <input id="submit-button" type="submit" value="Update" class="update-button">
+        </form>
+      </div>
+    </div>
+  </main>
+</div>

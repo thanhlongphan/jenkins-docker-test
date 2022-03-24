@@ -1,0 +1,33 @@
+<div>
+    <main id="container">
+      <div class="get-customer-by-id-form">
+  
+        <form method="post" (ngSubmit)="findByIdCustomer()">
+          <label for="customerId">Enter Id to be updated</label>
+          <input type="number" id="customerId" class="input-block form-control" [(ngModel)]="toUpdateCustomerId" name="customerId">
+          <input type="submit" value="Get Customer Information" class="update-button">
+          <div class="alert alert-warning" *ngIf="invalidCustomerId" style="color: red; font-size: 14px;">Invalid Customer ID</div>
+        </form>
+      </div>
+      <div id="update-form-container" class="update-form-container">
+        <div class="update-form-header">
+          <h1>Customer Information</h1>
+        </div>
+        <div class="update-form-body" *ngIf="customer">
+          <form id="update-form" accept-charset="UTF-8" method="post" (ngSubmit)="onclick()" name="updateForm">
+            <!--id-->
+            <label for="id">Id:</label>
+            <input type="text" id="id" class="input-block form-control" [(ngModel)]="customer.id" name="id" readonly>
+            <!--name-->
+            <label for="name">Name:</label>
+            <input type="text" id="name" class="input-block form-control" [(ngModel)]="customer.name" name="name" >
+            <!--Adress-->
+            <label for="address">Adress:</label>
+            <input type="text" id="address" class="input-block form-control" [(ngModel)]="customer.address" name="address">
+            <!--submit button-->
+            <input id="submit-button" type="submit" value="Update" class="update-button" name="submit-button">
+          </form>
+        </div>
+      </div>
+    </main>
+  </div>

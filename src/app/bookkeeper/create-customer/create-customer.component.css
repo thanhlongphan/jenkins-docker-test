@@ -1,0 +1,78 @@
+* {
+  box-sizing: border-box;
+}
+
+main {
+  display: block;
+}
+
+.create-customer-form-container {
+  width: 400px;
+  margin: auto;
+  font-family: "Helvetica", "Arial", sans-serif;
+}
+
+.create-customer-form-container h1 {
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: -0.5px;
+  background-color: white;
+  margin-top: 30px;
+  margin-bottom: -20px;
+  text-align: center;
+}
+
+.create-form {
+  border-radius: 6px;
+  padding: 20px;
+  font-size: 14px;
+  line-height: 21px;
+  margin-top: 16px;
+}
+
+.create-form label {
+  display: block;
+  margin-bottom: 7px;
+  margin-top: 7px;
+  font-weight: 400;
+  text-align: left;
+}
+
+.create-form .input-block {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.input-block {
+  display: block;
+  width: 100%;
+}
+
+.create-customer-form-container .button {
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: dodgerblue;
+  font-weight: 550;
+  border: 1px solid #b5b5b5;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 5px 16px;
+}
+
+.create-customer-form-container .button-add-project {
+  margin-top: 20px;
+  display: block;
+  width: 90%;
+  text-align: center;
+  background-color: dodgerblue;
+  font-weight: 550;
+  border: 1px solid #b5b5b5;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 5px 16px;
+  margin-left: 20px;
+}

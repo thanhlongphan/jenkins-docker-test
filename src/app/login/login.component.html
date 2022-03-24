@@ -1,0 +1,55 @@
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+<!--<div class="navbar is-black">-->
+<!--  <div class="navbar-brand">-->
+<!--    <a class="navbar-item" routerLinkActive="active" routerLink="/home">-->
+<!--      <img src="assets/image/haeger-logo-invert.png" alt="haeger-logo">-->
+<!--    </a>-->
+<!--    <a routerLinkActive="active" routerLink="/home" class="navbar-item has-text-centered">Time Table</a>-->
+<!--    <a routerLinkActive="active" routerLink="/home" class="navbar-item has-text-centered">Project</a>-->
+<!--    <a routerLinkActive="active" routerLink="/home" class="navbar-item has-text-centered">Customer</a>-->
+<!--  </div>-->
+<!--</div>-->
+<app-header></app-header>
+
+
+<div class="application-main">
+  <main id="container">
+    <div id="login" class="login-form">
+      <div class="login-form-header">
+        <h1>Login in to HaegerTime</h1>
+      </div>
+      <div class="login-form-body">
+        <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+        <form id="auth-form" accept-charset="UTF-8" method="post"
+              (ngSubmit)="login()"
+              #authForm="ngForm">
+          <!--username-->
+          <label for="login-field">Email address</label>
+          <input id="login-field" type="text" class="input-block form-control"
+                 autocapitalize="off" name="username"
+                 [(ngModel)]="username"
+                 #userNameInput="ngModel"
+                 required>
+          <!--password-->
+          <label for="password">Password</label>
+          <input id="password" type="password" class="input-block form-control"
+                 name="password" [(ngModel)]="password"
+                 #passwordInput="ngModel"
+                 required>
+          <div class="help is-error" *ngIf="userNameInput.invalid || passwordInput.invalid">
+            Username and password are required.
+          </div>
+          <!--submit button-->
+          <input id="login-button" type="submit" value="Sign in"
+                 class="sign-in-button"
+                 [disabled]="authForm.invalid">
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+
+
+
+

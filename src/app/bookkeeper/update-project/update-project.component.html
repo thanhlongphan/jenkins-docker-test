@@ -1,0 +1,38 @@
+
+<app-header></app-header>
+
+<div>
+  <main id="container">
+    <div class="get-project-by-id-form">
+      <form method="post" (ngSubmit)="getProjectById()">
+        <label for="projectId">Enter Project Id to be updated</label>
+        <input type="number" id="projectId" class="input-block form-control" [(ngModel)]="toUpdateProjectId" name="userId">
+        <input type="submit" value="Get Project Information" class="update-button">
+        <div class="alert alert-warning" *ngIf="invalidProjectId" style="color: red; font-size: 14px;">Invalid User ID</div>
+      </form>
+    </div>
+    <div id="update-form-container" class="update-form-container" *ngIf="toUpdateProject">
+      <div class="update-form-header">
+        <h1>Project Information</h1>
+      </div>
+      <div class="update-form-body" >
+        <form id="update-form" accept-charset="UTF-8" method="post" (ngSubmit)="onclick()" name="updateForm">
+          <!--id-->
+          <label for="id">Id:</label>
+          <input type="text" id="id" class="input-block form-control" [(ngModel)]="toUpdateProject.id" name="id" readonly>
+          <!--title-->
+          <label for="firstname">Title:</label>
+          <input type="text" id="firstname" class="input-block form-control" [(ngModel)]="toUpdateProject.title" name="title" >
+          <!--start-->
+          <label for="start">Start:</label>
+          <input type="date" id="start" class="input-block form-control" [(ngModel)]="toUpdateProject.start" name="start">
+          <!--end-->
+          <label for="end">End:</label>
+          <input type="date" id="end" class="input-block form-control"  [(ngModel)]="toUpdateProject.end" name="end">
+          <!--submit button-->
+          <input id="submit-button" type="submit" value="Update" class="update-button" name="submit-button">
+        </form>
+      </div>
+    </div>
+  </main>
+</div>

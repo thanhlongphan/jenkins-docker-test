@@ -1,0 +1,38 @@
+<app-header></app-header>
+<div *ngIf="timeTableDays">
+  <div class="columns is-centered has-text-grey-darker has-text-centered">
+    <h1 class="title" style="margin-top: 50px; margin-bottom: 30px">My holidays</h1>
+  <div *ngIf="isEmptyList">
+    <p>You haven't holidays to show</p>
+  </div>
+  </div>
+  <div class="container">
+  <div *ngIf="!isEmptyList">
+    <table class="global-table">
+      <thead>
+        <tr>
+          <th>Day Id</th>
+          <th>Start</th>
+          <th>End</th>
+          <th>Actual Hours</th>
+          <th>Expected Hours</th>
+          <th>Absence Status</th>
+          <th>Holiday Hours</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ttd of timeTableDays">
+          <td>{{ttd.workdayId}}</td>
+          <td>{{ttd.startTime}}</td>
+          <td>{{ttd.endTime}}</td>
+          <td></td>
+          <td>{{ttd.expectedHours}}</td>
+          <td>{{ttd.absenceStatus}}</td>
+          <td>{{ttd.holidayHours}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+</div>
+

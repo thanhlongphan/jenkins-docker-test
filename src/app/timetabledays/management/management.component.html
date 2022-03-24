@@ -1,0 +1,46 @@
+<app-header></app-header>
+
+<div *ngIf="user">
+  <div *ngIf="isAdminLoggedIn()">
+    <div>
+      <button routerLinkActive="active" routerLink="/timetable/management/all-sick-employees">
+        Show All Sick Employees On Day
+      </button>
+      <button routerLinkActive="active" routerLink="/timetable/management/all-employees-on-holiday">
+        Show All Employees On Holiday
+      </button>
+    </div>
+  </div>
+  <div>
+    <button routerLinkActive="active" routerLink="/timetable/management/show-all-my-holidays">
+      Show All My Holidays
+    </button>
+  </div>
+  <div>
+    <button (click)="open(applyHoliday)">Apply Holiday</button>
+  </div>
+</div>
+
+
+<ng-template #applyHoliday let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-title">Apply for holiday</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body" *ngIf="user">
+    <form method="post" (ngSubmit)="onClickApplyHoliday()">
+      <div class="mb-3">
+        <label for="id">Employee Id</label>
+        <input type="number" readonly id="id" class="form-control" [(ngModel)]="user.id" name="employeeId">
+        <label for="workdayId">Workday Id</label>
+        <input type="number" id="workdayId" class="form-control" [(ngModel)]="workdayId" name="workdayId">
+        <label for="duration">Duration</label>
+        <input type="number" id="duration" class="form-control" [(ngModel)]="duration" name="workdayId">
+      </div>
+      <div>
+        <input type="submit" value="Apply" class="btn btn-primary" (click)="modal.close()" style="float: left">
+        <input type="button" value="Cancel" (click)="modal.close()" class="btn btn-primary" style="float: right">
+      </div>
+    </form>
+  </div>
+</ng-template>

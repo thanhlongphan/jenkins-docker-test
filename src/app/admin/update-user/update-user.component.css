@@ -1,0 +1,115 @@
+* {
+  box-sizing: border-box;
+}
+
+main {
+  display: block;
+}
+
+.get-user-by-id-form {
+  width: 340px;
+  margin: auto;
+  font-family: "Helvetica", "Arial", sans-serif;
+}
+
+.get-user-by-id-form .update-button {
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: dodgerblue;
+  font-weight: 550;
+  border: 1px solid #b5b5b5;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 5px 16px;
+}
+
+.get-user-by-id-form label {
+  display: block;
+  margin-bottom: 7px;
+  margin-top: 7px;
+  font-weight: 400;
+  text-align: left;
+}
+
+
+.update-form-container {
+  width: 340px;
+  margin: auto;
+  font-family: "Helvetica", "Arial", sans-serif;
+}
+
+.update-form-header {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  color: black;
+  text-align: center;
+  text-shadow: none;
+  background-color: white;
+  border: 0;
+}
+
+.update-form-header h1 {
+  font-size: 24px;
+  font-weight: 300;
+  letter-spacing: -0.5px;
+}
+
+.update-form-body {
+  border-top: 1px solid #b5b5b5;
+  border-radius: 6px;
+  padding: 20px;
+  font-size: 14px;
+  background-color: rgb(246,248,250);
+  line-height: 21px;
+  margin-top: 16px;
+}
+
+#update-form label {
+  display: block;
+  margin-bottom: 7px;
+  margin-top: 7px;
+  font-weight: 400;
+  text-align: left;
+}
+
+#update-form .input-block {
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.input-block {
+  display: block;
+  width: 100%;
+}
+
+.form-control {
+  padding: 5px 12px;
+  font-size: 14px;
+  line-height: 20px;
+  color: rgb(36,41,47);
+  background-color: rgb(255,255,255);
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  border: 1px solid #b5b5b5;
+  border-radius: 6px;
+  outline: none;
+  box-shadow: rgba(208,215,222,0.2);
+}
+
+#update-form .update-button {
+  margin-top: 20px;
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: dodgerblue;
+  font-weight: 550;
+  border: 1px solid #b5b5b5;
+  border-radius: 6px;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 5px 16px;
+}
+

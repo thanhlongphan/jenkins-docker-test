@@ -1,0 +1,52 @@
+
+<app-header></app-header>
+
+
+<div>
+  <main id="container">
+    <div class="get-user-by-id-form">
+
+      <form method="post" (ngSubmit)="getUserById()">
+        <label for="userId">Enter Id to be updated</label>
+        <input type="number" id="userId" class="input-block form-control" [(ngModel)]="toUpdateUserId" name="userId">
+        <input type="submit" value="Get User Information" class="update-button">
+        <div class="alert alert-warning" *ngIf="invalidUserId" style="color: red; font-size: 14px;">Invalid User ID</div>
+      </form>
+    </div>
+    <div id="update-form-container" class="update-form-container" *ngIf="toUpdateUser">
+      <div class="update-form-header">
+        <h1>User Information</h1>
+      </div>
+      <div class="update-form-body" >
+        <form id="update-form" accept-charset="UTF-8" method="post" (ngSubmit)="onclick()" name="updateForm">
+          <!--id-->
+          <label for="id">Id:</label>
+          <input type="text" id="id" class="input-block form-control" [(ngModel)]="toUpdateUser.id" name="id" readonly>
+          <!--first name-->
+          <label for="firstname">First Name:</label>
+          <input type="text" id="firstname" class="input-block form-control" [(ngModel)]="toUpdateUser.firstname" name="firstname" >
+          <!--last name-->
+          <label for="lastname">Last Name:</label>
+          <input type="text" id="lastname" class="input-block form-control" [(ngModel)]="toUpdateUser.lastname" name="lastname">
+          <!--email-->
+          <label for="email">Email:</label>
+          <input type="email" id="email" class="input-block form-control"  [(ngModel)]="toUpdateUser.email" name="email">
+          <!--password-->
+          <label for="password">Password:</label>
+          <input type="text" id="password" class="input-block form-control" [(ngModel)]="toUpdateUser.password" name="password" >
+          <!--role-->
+          <label for="role">Role:</label>
+          <input type="text" id="role" class="input-block form-control" [(ngModel)]="toUpdateUser.role" name="role" >
+          <!--urlaubstage-->
+          <label for="urlaubstage">Urlaubstage:</label>
+          <input type="number" id="urlaubstage" class="input-block form-control" [(ngModel)]="toUpdateUser.urlaubstage" name="urlaubstage">
+          <!--frozen-->
+          <label for="frozen">Enable (true = active || false = inactive):</label>
+          <input type="text" id="frozen" class="input-block form-control" [(ngModel)]="toUpdateUser.frozen" name="frozen">
+          <!--submit button-->
+          <input id="submit-button" type="submit" value="Update" class="update-button" name="submit-button">
+        </form>
+      </div>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,25 @@
+
+
+<app-header></app-header>
+
+
+
+<div>
+    <main id="container">
+      <div class="get-user-by-id-form">
+
+        <form method="delete" (ngSubmit)="onclick()">
+          <label for="userId">Enter Id to delete user</label>
+          <input type="number" id="userId" class="input-block form-control" [(ngModel)]="id" name="userId">
+          <input type="submit" value="delete user" class="delete-button">
+          <div class="alert alert-warning" *ngIf="invalidUserId" style="color: red; font-size: 14px;">Invalid User ID</div>
+        </form>
+      </div>
+      <div id="delete-form-container" class="delete-form-container" *ngIf="user">
+
+    </div>
+</main>
+</div>
+
+
+

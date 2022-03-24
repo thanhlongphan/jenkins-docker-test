@@ -1,0 +1,41 @@
+<app-header></app-header>
+
+<div>
+  <main id="container">
+    <div id="create-user-form-container" class="create-user-form-container">
+      <div class="create-form-header">
+        <h1>Create New User</h1>
+      </div>
+      <div class="create-form-body">
+        <form id="create-form" accept-charset="UTF-8" method="post" (ngSubmit)="onclick()" #createForm="ngForm">
+          <!--first name-->
+          <label for="firstname">First Name:</label>
+          <input type="text" id="firstname" class="input-block form-control" name="firstname" [(ngModel)]="firstName"
+                 required>
+          <!--last name-->
+          <label for="lastname">Last Name:</label>
+          <input type="text" id="lastname" class="input-block form-control" name="lastname" [(ngModel)]="lastName"
+                 required>
+          <!--email-->
+          <label for="email">Email:</label>
+          <input type="email" id="email" class="input-block form-control" name="lastname" [(ngModel)]="email" required>
+          <!--password-->
+          <label for="password">Password:</label>
+          <input type="text" id="password" class="input-block form-control" name="password" [(ngModel)]="password"
+                 required>
+          <!--role-->
+
+          <label for="role">Role:</label>
+          <!--<input type="text" id="role" class="input-block form-control" name="lastname" [(ngModel)]="role" required>-->
+          <select class="create" id="role" #Select (change)="roleSelect(Select.value)">
+            <option *ngFor="let r of roles" [value]="r" >{{r}}</option>
+          </select>
+
+
+          <!--submit button-->
+          <input id="submit-button" type="submit" value="Create New User" class="create-button" [disabled]="createForm.invalid">
+        </form>
+      </div>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,8 @@
+<app-header></app-header>
+<div>
+  <h1>Delete Customer</h1>
+  <label for="customerId">Enter customer id to delete:</label>
+  <input type="number" id="customerId" style="margin-left: 10px" [(ngModel)]="customerId">
+  <button class="btn btn-danger" style="margin-left: 20px;" (click)="deleteCustomerById()">Delete</button>
+  <div *ngIf="invalidNumber" style="color: red; font-size: 14px">Invalid number</div>
+</div>

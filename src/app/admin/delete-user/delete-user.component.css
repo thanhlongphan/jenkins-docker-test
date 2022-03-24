@@ -1,0 +1,25 @@
+.get-user-by-id-form {
+    width: 340px;
+    margin: auto;
+    font-family: "Helvetica", "Arial", sans-serif;
+  }
+
+  .get-user-by-id-form .delete-button {
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    background-color: dodgerblue;
+    font-weight: 550;
+    border: 1px solid #b5b5b5;
+    border-radius: 6px;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 5px 16px;
+  }
+
+  .delete-form-container {
+    width: 340px;
+    margin: auto;
+    font-family: "Helvetica", "Arial", sans-serif;
+  }

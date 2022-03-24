@@ -1,0 +1,137 @@
+<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+<!--<div class="navbar is-black">-->
+<!--  <div class="navbar-brand">-->
+<!--    <a class="navbar-item" routerLinkActive="active" routerLink="/home">-->
+<!--      <img src="assets/image/haeger-logo-invert.png" alt="haeger-logo">-->
+<!--    </a>-->
+
+<!--    <div *ngIf="isUserLoggedIn" class="navbar-item has-dropdown is-hoverable">-->
+<!--      <a class="navbar-link">-->
+<!--        Time Table-->
+<!--      </a>-->
+
+<!--      <div class="navbar-dropdown" *ngIf="user">-->
+<!--        <a routerLinkActive="active" routerLink="/timetable/management" class="navbar-item">-->
+<!--          Management-->
+<!--        </a>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div *ngIf="isUserLoggedIn" class="navbar-item has-dropdown is-hoverable">-->
+<!--      <a class="navbar-link">-->
+<!--        Projects-->
+<!--      </a>-->
+
+<!--      <div class="navbar-dropdown" *ngIf="user">-->
+<!--        <a routerLinkActive="active" routerLink="/projects" class="navbar-item">-->
+<!--          All Projects-->
+<!--        </a>-->
+<!--        <a *ngIf="isAdminLoggedIn()" routerLinkActive="active" routerLink="/update-project" class="navbar-item">-->
+<!--          Update Project-->
+<!--        </a>-->
+<!--        <a *ngIf="isAdminLoggedIn()" routerLinkActive="active" routerLink="/create-new-project" class="navbar-item">-->
+<!--          Create New Project</a>-->
+<!--        <a *ngIf="isAdminLoggedIn()" routerLinkActive="active" routerLink="/delete-project-by-id" class="navbar-item">-->
+<!--          Delete Project By Id</a>-->
+<!--      </div>-->
+<!--    </div>-->
+
+
+<!--    <div *ngIf="isUserLoggedIn" class="navbar-item has-dropdown is-hoverable">-->
+<!--      <a class="navbar-link">-->
+<!--        Customers-->
+<!--      </a>-->
+
+<!--      <div class="navbar-dropdown" *ngIf="user">-->
+<!--        <a routerLinkActive="active" routerLink="/customers" class="navbar-item">-->
+<!--          All Customers-->
+<!--        </a>-->
+<!--        <a *ngIf="isAdminLoggedIn()" routerLinkActive="active" routerLink="/update-customer" class="navbar-item">-->
+<!--          Update Customer-->
+<!--        </a>-->
+<!--        <a *ngIf="isAdminLoggedIn()" routerLinkActive="active" routerLink="/create-new-customer" class="navbar-item">-->
+<!--          Create New Customer</a>-->
+<!--        <a *ngIf="isAdminLoggedIn()" routerLinkActive="active" routerLink="/delete-customer-by-id" class="navbar-item">-->
+<!--          Delete Customer</a>-->
+<!--        <a *ngIf="isAdminLoggedIn()" routerLinkActive="active" routerLink="/find-customer-by-id" class="navbar-item">-->
+<!--          Find Customer by Id-->
+<!--        </a>-->
+<!--      </div>-->
+<!--    </div>-->
+
+
+<!--    <div *ngIf="isUserLoggedIn" class="navbar-item has-dropdown is-hoverable">-->
+<!--      <a class="navbar-link">-->
+<!--        Users-->
+<!--      </a>-->
+
+<!--      <div class="navbar-dropdown" *ngIf="user">-->
+<!--        <a routerLinkActive="active" routerLink="/users" class="navbar-item">-->
+<!--          All Users-->
+<!--        </a>-->
+<!--        <a routerLinkActive="active" routerLink="/current-user-update" class="navbar-item">-->
+<!--          Update My Account-->
+<!--        </a>-->
+<!--        <a *ngIf="isAdminLoggedIn()" routerLinkActive="active" routerLink="/create-new-user" class="navbar-item">Create New User</a>-->
+<!--      </div>-->
+<!--    </div>-->
+
+
+<!--  </div>-->
+
+<!--  <div class="navbar-end">-->
+<!--    <a *ngIf="isUserLoggedIn" class="navbar-item has-text-centered" routerLinkActive="active" routerLink="/logout" (click)=logout()>Logout</a>-->
+<!--  </div>-->
+<!--</div>-->
+
+<app-header></app-header>
+
+<div class="container">
+
+
+<div *ngIf="user">
+  <!--Information Tabelle-->
+  <table class="global-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Information</th>
+      </tr>
+    </thead>
+    <tr>
+      <td >User Id:</td>
+      <td >{{user.id}}</td>
+    </tr>
+    <tr>
+      <td >First Name:</td>
+      <td >{{user.firstname}}</td>
+    </tr>
+    <tr>
+      <td >Last Name:</td>
+      <td >{{user.lastname}}</td>
+    </tr>
+    <tr>
+      <td >Email:</td>
+      <td>{{user.email}}</td>
+    </tr>
+    <tr>
+      <td>Urlaubstag:</td>
+      <td>{{user.urlaubstage}}</td>
+    </tr>
+    <tr>
+      <td>Enable:</td>
+      <td>{{user.frozen}}</td>
+    </tr>
+    <tr>
+      <td>Role:</td>
+      <td>{{user.role}}</td>
+    </tr>
+  </table>
+</div>
+
+<div class="columns is-centered" style="margin: 20px">
+  <div>
+    <button class="btn-primary btn" routerLinkActive="active" routerLink="/current-user-update">Update</button>
+  </div>
+</div>
+</div>

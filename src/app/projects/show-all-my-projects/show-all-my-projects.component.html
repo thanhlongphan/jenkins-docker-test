@@ -1,0 +1,26 @@
+<app-header></app-header>
+<div class="columns is-centered has-text-centered has-text-grey-darker">
+  <h1 class="title" style="margin-top: 50px; margin-bottom: 30px">My Projects</h1>
+</div>
+<div class="container">
+  <div *ngIf="myProjects">
+    <table class="global-table">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Title</th>
+          <th>Start</th>
+          <th>End</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let p of myProjects">
+        <td>{{p.id}}</td>
+        <td>{{p.title}}</td>
+        <td>{{p.start}}</td>
+        <td>{{p.end}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
