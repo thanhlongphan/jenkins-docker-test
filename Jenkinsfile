@@ -14,13 +14,13 @@ pipeline {
     }
 	  stage('Docker build') {
 		  steps {
-				sh 'docker build -t bibliothek88/angular .'
+				sh 'docker build -t bibliothek88/angular:latest .'
 			  }
 	  }
     stage('Docker push') {
 		  steps {
-		    withDockerRegistry(credentialsId: 'long-nexus', url: 'docker.haeger-consulting.de') {
-         sh 'docker push bibliothek88/angular'
+		    withDockerRegistry(credentialsId: 'long-nexus', url: 'https://nexus.haeger-consulting.de:8080') {
+         sh 'docker push bibliothek88/angular:latest'
         }
       }
 	  }
