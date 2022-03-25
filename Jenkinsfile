@@ -1,8 +1,8 @@
 pipeline {
   agent any
   environment {
-    registry = "nexus.haeger-consulting.de:8080/"
-    registryCredentials = "long-nexus"
+    LONG_DOCKERHUB_CREDS = credentials('long-dockerhub-login')
+    LONG_NEXUS_CREDS = credentials('long-nexus-login')
   }
   stages {
     stage('Clone the repo') {
@@ -16,7 +16,7 @@ pipeline {
 	  stage('Docker build') {
 		  steps {
 		    echo '----------Building Docker Image --------------'
-				sh 'docker build -t ht-angular .'
+				sh 'docker build -t ht-angular:$BUILD_NUMBER .'
 				echo '----------List of Docker Image ---------------'
 				sh 'docker images ls'
 			  }
@@ -26,11 +26,11 @@ pipeline {
 			echo 'listing images'
 			sh 'docker images'
 			echo 'tagging images'
-			sh 'docker tag ht-angular bibliothek88/angular:22'
+			sh 'docker tag ht-angular:$BUILD_NUMBER bibliothek88/angular:$BUILD_NUMBER'
 			echo 'login to dockerhub'
-			sh 'docker login -u bibliothek88 -p ft7xhmbxhq'
+			sh 'echo $LONG_DOCKERHUB_CREDS_PSW | docker login -u $LONG_DOCKERHUB_CREDS_USR --password-stdin'
 			echo 'pushing image'
-			sh 'docker push bibliothek88/angular:22'
+			sh 'docker push bibliothek88/angular:$BUILD_NUMBER'
 	    }
 	  }
 	  stage('Deploy to Nexus') {
@@ -38,11 +38,11 @@ pipeline {
 			echo 'listing images'
 			sh 'docker images'
 			echo 'tagging images'
-			sh 'docker tag ht-angular docker.haeger-consulting.de/ht-angular:22'
-			echo 'login to dockerhub'
-			sh 'docker login docker.haeger-consulting.de -u lphan -p 2rU7EN9AE8mJqpQ'
+			sh 'docker tag ht-angular:$BUILD_NUMBER docker.haeger-consulting.de/ht-angular:$BUILD_NUMBER'
+			echo 'login to nexus'
+			sh 'echo $LONG_NEXUS_CREDS_PSW | docker login docker.haeger-consulting.de -u $LONG_NEXUS_CREDS_USR --password-stdin'
 			echo 'pushing image'
-			sh 'docker push docker.haeger-consulting.de/ht-angular:22'
+			sh 'docker push docker.haeger-consulting.de/ht-angular:$BUILD_NUMBER'
 	    }
 	  }
   }
