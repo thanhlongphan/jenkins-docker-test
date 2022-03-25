@@ -4,15 +4,28 @@ pipeline {
 	LONG_NEXUS_CREDS = credentials('long-nexus-login')
   }
   stages {
+	stage('Clone the repo') {
+		  steps {
+			echo 'Clone the repo'
+			sh 'rm -rf jenkins-docker-test'
+			sh 'git clone https://github.com/thanhlongphan/jenkins-docker-test.git'
+		  }
+    }
+	stage('Docker build') {
+		  steps {
+		    echo '----------Building Docker Image --------------'
+				sh 'docker build -t ht-angular:$BUILD_NUMBER .'
+				echo '----------List of Docker Image ---------------'
+			  }
+	  }
     stage('Login into nexus') {
       steps {
+		sh 'docker image'
+		echo 'tagging images'
+		sh 'docker tag ht-angular:$BUILD_NUMBER docker.haeger-consulting.de/ht-angular:$BUILD_NUMBER'
         sh 'echo $LONG_NEXUS_CREDS_PSW | docker login docker.haeger-consulting.de -u $LONG_NEXUS_CREDS_USR --password-stdin'
       }
     }
   }
-  post {
-    failure {
-      emailext body: 'Summary', subject: 'Pipeline Status', to: 'lphan@haeger-consulting.de'
-    }
-  }
+ 
 }
