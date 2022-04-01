@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  tools {
+	docker "myDocker"
+  }
   environment {
     LONG_DOCKERHUB_CREDS = credentials('long-dockerhub-login')
   }
@@ -11,10 +14,7 @@ pipeline {
 			sh 'git clone https://github.com/thanhlongphan/jenkins-docker-test.git'
 		  }
     }
-	stage('Initialize'){
-        def dockerHome = tool 'myDocker'
-        env.PATH = "${dockerHome}/bin:${env.PATH}"
-    }
+	
 
 	  stage('Docker build') {
 		  steps {
