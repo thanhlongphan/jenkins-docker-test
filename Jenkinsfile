@@ -1,8 +1,5 @@
 pipeline {
   agent any
-  tools {
-	docker 'myDocker'
-  }
   environment {
     LONG_DOCKERHUB_CREDS = credentials('long-dockerhub-login')
   }
