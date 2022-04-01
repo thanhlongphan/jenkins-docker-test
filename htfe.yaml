@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: htfe-app
+  labels:
+    app: htfe
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: htfe
+
+  template:
+    metadata:
+      labels:
+        app: htfe
+    spec:
+      containers:
+        - name: htfe
+          image: bibliothek88/jk:latest
+          ports:
+            - containerPort: 80
+
+---
+apiVersion: v1
+
+kind: Service
+
+metadata:
+  name: htfe-svc
+  labels:
+    app: htfe
+
+spec:
+  type: LoadBalancer
+  ports:
+    - nodePort: 32001
+      port: 80
+      targetPort: 80
+      protocol: TCP
+  selector:
+    app: htfe
