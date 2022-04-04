@@ -35,9 +35,7 @@ pipeline {
 	  }
 	  stage('Deploying App to Kubernetes') {
 	  steps{
-	    withCredentials([kubeconfigContent(credentialsId: 'kubernetes', variable: 'KUBECONFIG_CONTENT')]) {
-			sh 'kubectl create -f htfe.yaml'
-		}
+	    kubernetesDeploy configs: 'htfe.yaml', enableConfigSubstitution: false, kubeConfig: [path: ''], kubeconfigId: 'kubernetes', secretName: '', ssh: [sshCredentialsId: '*', sshServer: ''], textCredentials: [certificateAuthorityData: '', clientCertificateData: '', clientKeyData: '', serverUrl: 'https://']
 		}
 	  }
 	  
