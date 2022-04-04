@@ -7,7 +7,6 @@ pipeline {
     stage('Clone the repo') {
 		  steps {
 			echo 'Clone the repo'
-			sh 'rm -rf jenkins-docker-test'
 			sh 'git clone https://github.com/thanhlongphan/jenkins-docker-test.git'
 		  }
     }
@@ -31,6 +30,13 @@ pipeline {
 			sh 'echo $LONG_DOCKERHUB_CREDS_PSW | docker login -u $LONG_DOCKERHUB_CREDS_USR --password-stdin'
 			echo 'pushing image'
 			sh 'docker push bibliothek88/jk:latest'
+	    }
+	  }
+	  stage('Deploying App to Kubernetes') {
+	    steps {
+			script {
+				kubernetesDeploy(configs: "htfe.yaml", kubeconfigId: "kubernetes")
+			}
 	    }
 	  }
 	  
