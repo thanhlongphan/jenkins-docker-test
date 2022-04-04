@@ -35,9 +35,7 @@ pipeline {
 	  }
 	  stage('Deploying App to Kubernetes') {
 	    steps {
-			script {
-				kubernetesDeploy(configs: "htfe.yaml", kubeconfigId: "kubernetes")
-			}
+			sh 'kubectl create -f htfe.yaml'
 	    }
 	  }
 	  
