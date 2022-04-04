@@ -33,12 +33,6 @@ pipeline {
 			sh 'docker push bibliothek88/jk:latest'
 	    }
 	  }
-	  stage('Deploying App to Kubernetes') {
-	    steps {
-			script {
-				kubernetesDeploy(configs: "htfe.yaml", kubeconfigId: "kubernetes")
-			}
-	    }
-	  }
+	  
   }
 }
