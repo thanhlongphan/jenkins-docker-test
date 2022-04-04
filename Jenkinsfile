@@ -34,12 +34,14 @@ pipeline {
 	    }
 	  }
 	  stage('Deploying App to Kubernetes') {
+	  steps{
 	    withCredentials([kubeconfigContent(credentialsId: 'kubernetes', variable: 'KUBECONFIG_CONTENT')]) {
 			try {
-					kubectl apply -f htfe.yaml
+					sh 'kubectl apply -f htfe.yaml'
 			} catch(error) {
-					kubectl create -f htfe.yaml
+					sh 'kubectl create -f htfe.yaml'
 			}	
+		}
 		}
 	  }
 	  
